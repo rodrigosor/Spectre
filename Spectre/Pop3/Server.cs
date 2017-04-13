@@ -18,7 +18,7 @@ namespace Spectre.Pop3
         /// <summary>
         /// Occurs when server has system error(Unknown error).
         /// </summary>
-		public event ErrorEventHandler Error;
+        public event ErrorEventHandler Error;
 
         #endregion
 
