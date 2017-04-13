@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\SpectreExtensions.cs" />
+    <Compile Include="Pop3\Command.cs" />
     <Compile Include="ReadException.cs" />
     <Compile Include="ReadReplyCode.cs" />
     <Compile Include="ServerConstants.cs" />

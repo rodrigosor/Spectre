@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Net.Sockets;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Spectre.Pop3
 {
@@ -42,7 +38,7 @@ namespace Spectre.Pop3
         /// <summary>
         /// Current pop3 command sended by client.
         /// </summary>
-        public string CurrentCommand { get; private set; }
+        public Command CurrentCommand { get; private set; }
 
         /// <summary>
         /// Creates a new instance of <see cref="Session"/>.
@@ -59,7 +55,7 @@ namespace Spectre.Pop3
         }
 
         /// <summary>
-        /// 
+        /// Start processing commands and replys
         /// </summary>
         internal void StartProcessing()
         {
@@ -78,7 +74,7 @@ namespace Spectre.Pop3
                     {
                         try
                         {
-
+                            CurrentCommand = Client.GetCommand();
                         }
                         catch (Exception ex)
                         {
@@ -104,7 +100,7 @@ namespace Spectre.Pop3
                             break;
                         }
 
-                        // Wait 100ms to save CPU, otherwise while loop may take 100% CPU. 
+                        // Wait a moment (100ms) to save CPU, otherwise while loop may take 100% CPU. 
                         Thread.Sleep(ServerConstants.ForAMoment);
 
                         //----- Session timeout stuff ------------------------------------------------//
